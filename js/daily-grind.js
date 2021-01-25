@@ -17,9 +17,19 @@ coffee.time
 */
 
 let myDate = new Date();
-let myDay = myDate.getDay();
+let myDay = "";
 let today = "";
 let coffee = "";
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+if(urlParams.has('day')){//use query string data
+    myDay = urlParams.get('day');
+}else{//use date object
+    myDay = myDate.getDay();
+}
+
+myDay = parseInt(myDay);
 
 function coffeeTemplate(coffee){
     let myReturn = "Hi from the template!";
